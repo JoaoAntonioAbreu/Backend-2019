@@ -1,0 +1,23 @@
+{
+    "person1" : {
+        "firstname" : "João",
+        "lastname" : "Afonso",
+        "profession" : "star wars fanboy",
+        "age" : "18",
+        "id": 1
+    },
+    "person2" : {
+        "firstname" : "Lénio",
+        "lastname" : "Qualquer coisa",
+        "profession" : "dealer",
+        "age" : "19",
+        "id": 2
+    },
+    "person3" : {
+        "firstname" : "João",
+        "lastname" : "António",
+        "profession" : "magic player",
+        "age" : "19",
+        "id": 3
+    }
+}
