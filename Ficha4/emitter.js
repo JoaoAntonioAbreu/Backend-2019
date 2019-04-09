@@ -2,16 +2,16 @@ function Emitter(){
     this.events={};
 }
 
-Emitter.prototype.on = function(type, listener){
-   if(this.events[type] == undefined){
-    this.events[type] = [];
+Emitter.prototype.on = function(event_name, listener){
+   if(this.events[event_name] == undefined){
+    this.events[event_name] = [];
    }
-   this.events[type].push(listener);
+   this.events[event_name].push(listener);
 
 };
 
 Emitter.prototype.emit = function(event_name){
-    if(this.events[event]!= undefinned){
+    if(this.events[event_name]!= undefinned){
         this.events[event_name].forEach(function(listner){
             listener();
 

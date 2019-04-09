@@ -9,14 +9,21 @@ console.log(str)
 var json = JSON.parse(str)
 console.log(json)
 
+
+
+//Ficha 6
 var Emitter = require("./emitter")
 var emtr = new Emitter;
-emtr.on(eventConstants.FILESAVED, function(){
-    console.log("A file was saved 1");
-});
 
-emtr.on(eventConstants.FILESAVED, function(){
-    console.log("A file was saved 2");
-});
+emtr.on('start', function(){
+    console.log("teste");
+})
+// emtr.on(eventConstants.FILESAVED, function(){
+//     console.log("A file was saved 1");
+// });
 
-emtr.emit(eventConstants.FILESAVED);
+// emtr.on(eventConstants.FILESAVED, function(){
+//     console.log("A file was saved 2");
+// });
+
+emtr.emit("start");
