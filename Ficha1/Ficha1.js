@@ -79,7 +79,7 @@ function Calculadora(a, b, c) {
     }
     else if (c == '^') {
        
-        return a ^ b;
+        return a ** b;
     }
     else {
         return('Operação invalida')
@@ -121,6 +121,34 @@ function factorial (num){
 console.log(factorial(5))
 
 //Ex11
-function mmm(){
-    
+function max(array){
+    var max = array[0];
+    for (let i = 1; i < array.length; i++) {
+             if(array[i] > max){
+                 max = array[i];
+             }  
+    }
+    return max;     
 }
+console.log(max([1,5,19]));
+
+function min(array){
+    var min = array[0];
+    for (let i = 1; i < array.length; i++) {
+             if(array[i] < min){
+                min = array[i];
+             }  
+    }
+    return min;     
+}
+console.log(min([1,5,19]));
+
+function med(array){
+    var med = array[0];
+    for (let i = 1; i < array.length; i++) {
+        med =(med + array[i])
+    }
+    med = med/array.length;
+    return med;     
+}
+console.log(med([1,10,19]));
