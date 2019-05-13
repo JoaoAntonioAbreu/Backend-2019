@@ -1,0 +1,55 @@
+{
+    "photo1": {
+        "id": 1,
+        "uploader": "João",
+        "title": "Trabalho_Grupo",
+        "description": "Descriçao do trabalho",
+        "size": 14,
+        "url": "",
+        "likes": 1000,
+        "dislikes": 109,
+        "comments": [
+            "inutil"
+        ],
+        "tags": [
+            "trabalho",
+            "grupo"
+        ]
+    },
+    "photo2": {
+        "id": 2,
+        "uploader": "António",
+        "title": "Trabalho",
+        "description": "Descriçao do trabalho",
+        "size": 13,
+        "url": "",
+        "likes": 10,
+        "dislikes": 12,
+        "comments": [
+            "util"
+        ],
+        "tags": [
+            "trabalho",
+            "grupo",
+            "interessante"
+        ]
+    },
+    "photo3": {
+        "id": 3,
+        "uploader": "Afonso",
+        "title": "Projeto",
+        "description": "Incredibily boy",
+        "size": 14,
+        "url": "",
+        "likes": 100,
+        "dislikes": 1999,
+        "comments": [
+            "Desinstala o for honor"
+        ],
+        "tags": [
+            "spam",
+            "socos",
+            "INCREDIBILLIS"
+        ]
+    }
+}
