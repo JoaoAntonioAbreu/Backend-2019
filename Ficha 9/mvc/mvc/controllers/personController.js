@@ -9,18 +9,19 @@ app.use(bodyParser.urlencoded({extended: false}));
 var mysql = require('mysql')
 
 var connection = mysql.createConnection({
-    host:'127.0.0.1',
+    host:'localhost',
     user:'root',
     password:'',
-    database: 'personsdb'    
+    database: 'personsdb'
+       
 });
-connection.connect();
+//connection.connect();
 
 
 
 exports.author_detail = function (req,res,next){
     var userId = req.params.id;
-    var query = 'SELECT * FROM person WHERE id = ?';
+    var query = 'SELECT * FROM persons WHERE id = ?';
     connection.query(query, userId, function (err, result, fields){
         if (err) throw err;
        // res.render('person', {title: 'Person Detail', person:
