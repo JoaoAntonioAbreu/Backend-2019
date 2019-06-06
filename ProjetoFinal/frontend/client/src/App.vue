@@ -1,27 +1,24 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <teste msg="Welcome to Your Vue.js App"/>
-     <li><a href="HelloWorld" >RELOAD</a></li>
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <li><a href="HelloWorld" >RELOAD</a></li> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import teste from './components/teste.vue';
+import HelloWorld from "./components/HelloWorld.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld,
-    teste,
-  
-  },
+    HelloWorld
+  }
 };
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
