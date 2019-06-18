@@ -14,9 +14,3 @@ readable.on('end', function(chunk){
     writable.end();
 });
 
-readable.pipe(writable);
-
-var gzip = zlib.createGzip();
-var compressed = fs.createWriteStream('big_lorem.txt.gz');
-
-readable.pipe(gzip).pipe(compressed);
