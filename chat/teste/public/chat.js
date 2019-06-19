@@ -9,18 +9,31 @@ $(function () {
     var send_username = $("#send_username")
     var chatroom = $("#chatroom")
     var feedback = $("#feedback")
-    var images = $("#images")
     var disconnected = $("#disconnected")
+
+    var image = $("#image")
+    var send_image = $("#send_image")
+
+
+
+
+    send_image.click(function () {
+        console.log('aqui')
+        socket.emit('new_image', { image: image.val() })
+    })
+
+    //Listen on new_message
+    socket.on("new_image", (data, file) => {
+        console.log(data)
+        feedback.html('');
+        image.val('');
+        chatroom.append("<img src='imagens/fked-1560911559980.png' style='max-width: 100%;height: auto;'>")
+       // console.log("<img src='upload/fked-1560906187409.png></img>")
+    })
+
     //Emit message
     send_message.click(function () {
-        if(images.val()==''){
-            socket.emit('new_message', { message: message.val(), image : null })
-    }else{
-        console.log(images.val())
-        socket.emit('new_message', { message: message.val(), image : images.val() })
-        images.val('')
-
-    }
+        socket.emit('new_message', { message: message.val() })
     })
 
     //Listen on new_message
@@ -64,7 +77,4 @@ $(function () {
     disconnected.click(function () {
         socket.emit('disconnected', { username: username.val() })
     })
-
-    //imagens    
-  
 });
