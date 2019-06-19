@@ -2,7 +2,8 @@ const express = require('express')
 const app = express()
 const multer = require('multer');
 const path = require('path');
-const fs = require("fs")
+const writeFile = require('write');
+const fs = require('fs')
 const sharp = require("sharp")
 //set the template engine ejs
 app.set('view engine', 'ejs')
@@ -57,6 +58,27 @@ function checkFileType(file,cb){
 //socket.io instantiation
 const io = require("socket.io")(server)
 
+const imagem = '';
+const messagem='';
+
+
+app.post('', (req,res) =>{ //botao upload 
+    upload(req, res, (err) => {
+        if(err){
+            res.render('index',{
+                msg: err
+            });
+        } else{
+            console.log(req)
+            //sharp(`/upload/`).resize(800).toFile(`/upload/${req.file.filename}`)
+            sharp(req.file.path)
+        .resize(850)
+        .toFile(`./public/imagens/${req.file.filename}`)
+        this.imagem= `imagens/${req.file.filename}`
+        }
+    })
+});
+
 
 //listen on every connection
 io.on('connection', (socket) => {
@@ -64,6 +86,7 @@ io.on('connection', (socket) => {
 
 	//default username
 	socket.username = "Anonymous"
+    io.sockets.emit('new_message', { message: 'Has joined the chat', username: socket.username });
 
     //listen on change_username
     socket.on('change_username', (data) => {
@@ -81,7 +104,12 @@ io.on('connection', (socket) => {
         // var log = data.message + " " + socket.username + " " + new Date() + "\r\n";
         // fs.appendFile('teste1.txt', log)
         io.sockets.emit('new_message', {message : data.message, username : socket.username});
-        
+        this.messagem ='username: ' + socket.username + ' messagem: '+ data.message +' '+new Date();
+        //fs.appendFile('teste.txt',log + new Date())
+        console.log(this.messagem)
+        fs.appendFileSync('text.txt', this.messagem+"\r\n", function(err) {
+            if (err) console.log(err);
+          });
     })
 
     //listen on typing
@@ -100,26 +128,10 @@ io.on('connection', (socket) => {
         io.sockets.emit('new_message', { message: 'Disconected  ', username: socket.username });
     })
 
-    socket.on('new_image', (data) => {
-        io.sockets.emit('new_image', {image : data.image, username : socket.username});
-        
+    socket.on('change_image', (data) => {
+     io.sockets.emit('new_image', { image: this.imagem }); 
+     fs.appendFileSync('imagens.txt',"username: " + socket.username +" Sent: "+this.imagem+"\r\n", function(err) {
+        if (err) console.log(err);
+      });
     })
 })
-
-
-app.post('', (req,res) =>{ //botao upload 
-    upload(req, res, (err) => {
-        if(err){
-            res.render('index',{
-                msg: err
-            });
-        } else{
-            console.log(req)
-            //sharp(`/upload/`).resize(800).toFile(`/upload/${req.file.filename}`)
-            sharp(req.file.path)
-        .resize(850)
-        .toFile(`./public/imagens/${req.file.filename}`)
-        }
-    })
-});
-

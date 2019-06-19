@@ -17,18 +17,22 @@ $(function () {
 
 
 
-    send_image.click(function () {
-        console.log('aqui')
-        socket.emit('new_image', { image: image.val() })
+     //image
+     send_image.click(function () {
+        socket.emit('change_image', { username: username.val() })
     })
 
-    //Listen on new_message
-    socket.on("new_image", (data, file) => {
-        console.log(data)
+    //image
+    socket.on("send_image", (data) => {
         feedback.html('');
         image.val('');
-        chatroom.append("<img src='imagens/fked-1560911559980.png' style='max-width: 100%;height: auto;'>")
-       // console.log("<img src='upload/fked-1560906187409.png></img>")
+        chatroom.append("<img src='imagens/fked-1560974355423.png>")
+    })
+    socket.on("new_image", (data) => {
+        feedback.html('');
+        message.val('');
+        console.log(data)
+        chatroom.append("<img src="+data.image+">")
     })
 
     //Emit message
