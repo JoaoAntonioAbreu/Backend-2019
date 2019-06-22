@@ -17,35 +17,25 @@ $(function () {
 
 
 
-     //image
-     send_image.click(function () {
-        socket.emit('change_image', { username: username.val() })
-    })
-
-    //image
-    socket.on("send_image", (data) => {
-        feedback.html('');
-        image.val('');
-        chatroom.append("<img src='imagens/fked-1560974355423.png>")
-    })
-    socket.on("new_image", (data) => {
-        feedback.html('');
-        message.val('');
-        console.log(data)
-        chatroom.append("<img src="+data.image+">")
-    })
-
     //Emit message
-    send_message.click(function () {
-        socket.emit('new_message', { message: message.val() })
+    send_message.click(function (data) {
+        socket.emit('new_message', { message: message.val(), image: data.image, username: socket.username })
+        message.val('')
     })
 
-    //Listen on new_message
-    socket.on("new_message", (data) => {
+     //Listen on new_message
+     socket.on("new_message", (data) => {
         feedback.html('');
-        message.val('');
-        chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+        console.log(data)
+        if(data.image!=undefined && data.message==""){
+        chatroom.append("<p class='message'>" + data.username + ": </p>"+ "<img src="+data.image+">")
+        }else if(data.image!=undefined && data.message!=""){
+            chatroom.append("<p class='message'>" + data.username + ": "+data.message+"</p><img src="+data.image+">")
+        }else{
+            chatroom.append("<p class='message'>" + data.username + ": "+data.message+"</p>")
+        }
     })
+
 
     //Emit a username
     send_username.click(function () {
@@ -59,6 +49,7 @@ $(function () {
         chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
     })
 
+
     //Emit typing
     message.bind("keypress", () => {
         socket.emit('typing')
@@ -70,15 +61,15 @@ $(function () {
     })
 
     //disconnect 
-    socket.on('disconnect', () => {
-        socket.emit('disconnect')
-    })
-    socket.on('disconnected', (data) => {
-        feedback.html('');
-        message.val('');
-        chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
-    })
-    disconnected.click(function () {
-        socket.emit('disconnected', { username: username.val() })
-    })
+    // socket.on('disconnect', () => {
+    //     socket.emit('disconnect')
+    // })
+    // socket.on('disconnected', (data) => {
+    //     feedback.html('');
+    //     message.val('');
+    //     chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+    // })
+    // disconnected.click(function () {
+    //     socket.emit('disconnected', { username: username.val() })
+    // })
 });

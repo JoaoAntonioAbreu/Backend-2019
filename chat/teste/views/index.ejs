@@ -6,6 +6,7 @@
   <link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <title>Simple Chat App</title>
 </head>
 
@@ -22,28 +23,12 @@
     </div>
   </section>
 
+ 
   <section>
-    <div id="change_image">
-      <button id="send_image" type="button">Send Image</button>
-    </div>
-  </section>
-
-
-
-
-  <section>
-    <form action="" method="POST" enctype="multipart/form-data">
-      <div class="file-field input-field">
-        <div class="btn grey">
-          <input name="fked" type="file"/>
-        </div>
-      </div>
-      <button name="teste1" type="submit" class="btn">submit</button>
+    <form action="/chatroom" method="POST" enctype="multipart/form-data">
+     <input id="selectedFile"  name="fked" onchange="form.submit()" type="file" style="display: none;"/>
+     <input type="button"  class="pick_image" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
     </form>
-
-
-
-
   </section>
 
   <section id="chatroom">
