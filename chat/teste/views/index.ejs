@@ -2,48 +2,56 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
-  <link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-  <title>Simple Chat App</title>
+    <meta http-equiv="Content-Type" const="text/html;charset=UTF-8" />
+    <!-- <link rel="icon" href="./assets/icon.png"> -->
+    <link href="http://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <title>Chat</title>
+    <link rel="icon" href="./assets/icon.png" type="image/png" sizes="16x16">
 </head>
 
 <body>
-  <header>
-    <h1>Super Chat</h1>
-
-  </header>
-
-  <section>
-    <div id="change_username">
-      <input id="username" type="text" />
-      <button id="send_username" type="button">Change username</button>
+    <header>
+        <h1>Chatroom</h1>
+    </header>
+    <section>
+        <div id="show_username">
+            <label>Nick : <span id="sUsername"></span></label>
+        </div>
+    </section>
+    <section>
+        <div id="change_username">
+            <input id="username" type="text" />
+            <button id="send_username" type="button">Change username</button>
+        </div>
+    </section>
+    <div class="control_container">
+        <section id="chatroom">
+            <section id="feedback"></section>
+        </section>
+        <section id="show_users">
+            <ul id="users_list">
+            </ul>
+        </section>
     </div>
-  </section>
-
- 
-  <section>
-    <form action="/chatroom" method="POST" enctype="multipart/form-data">
-     <input id="selectedFile"  name="fked" onchange="form.submit()" type="file" style="display: none;"/>
-     <input type="button"  class="pick_image" value="Browse..." onclick="document.getElementById('selectedFile').click();" />
-    </form>
-  </section>
-
-  <section id="chatroom">
-    <section id="feedback"></section>
-  </section>
-
-
-
-  <section id="input_zone">
-    <input id="message" class="vertical-align" type="text" />
-    <button id="send_message" class="vertical-align" type="button">Send</button>
-  </section>
-
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="chat.js"></script>
+    <section id="input_zone">
+        <input id="message" class="vertical-align" type="text" />
+        <form action="/" class="vertical-align" style="height: 70%;width: 10%;margin: 0px 10px" method="POST"
+            enctype="multipart/form-data">
+            <input id="imagem" name="fked" onchange="form.submit()" type="file" style="display: none;" />
+            <input type="button" style="height: 100%;width: 100%;" class="pick_image" value="Browse..."
+                onclick="document.getElementById('imagem').click();" />
+        </form>
+        <button id="send_message" class="vertical-align" type="button" onclick="preventDefault(submit)">Send</button>
+    </section>
+    </section>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="chat.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>

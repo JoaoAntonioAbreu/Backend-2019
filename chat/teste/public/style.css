@@ -1,5 +1,4 @@
-
-  * {
+* {
     box-sizing: border-box;
 }
 
@@ -21,7 +20,8 @@ h1 {
     margin: 0px;
 }
 
-div#change_username, section#input_zone {
+div#change_username,
+section#input_zone {
     border: 5px outset #8258FA;
 }
 
@@ -31,14 +31,38 @@ div#change_username {
     background-color: #BCA9F5;
 }
 
+div#control_container {
+    width: 100%;
+    position: absolute;
+}
+
 section#chatroom {
     border: 5px inset #8258FA;
+    float: left;
     height: 85%;
+    width: 85%;
+    position: fixed;
+    overflow-y: auto;
+}
+
+section#show_users {
+    background-color: rgb(216, 206, 241);
+    border: 5px inset #8258FA;
+    float: left;
+    height: 85%;
+    width: 15%;
+    position: fixed;
     overflow: auto;
+    right: 0;
 }
 
 section#input_zone {
     height: 7%;
+    display: flex;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     background-color: #BCA9F5;
 }
@@ -57,7 +81,7 @@ input#username {
 
 input#message {
     display: inline-block;
-    width: 88%;
+    width: 78%;
     height: 70%;
     font-family: 'Comfortaa', sans-serif;
     font-size: 2vh;
@@ -72,7 +96,7 @@ button#send_message {
 p.message {
     margin: 0px;
     width: 100%;
-    height: 40px;
+    height: auto;
     font-size: 2vh;
     font-family: 'Comfortaa', sans-serif;
     padding: 1vh;
