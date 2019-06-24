@@ -71,10 +71,15 @@ app.post("/chatroom", (req, res) => {
 //listen on every connection
 io.on("connection", socket => {
   console.log("New user connected");
-
+  
   //default username
   socket.username = "Anonymous";
 
+
+  fs.appendFile("log.json",nome,(err)=>{
+    if(err)
+    console.log(err)
+  })
   io.sockets.emit("new_message", {
     message: "Has joined the chat",
     username: socket.username
